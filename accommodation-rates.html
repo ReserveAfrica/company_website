@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accommodation Rates — Okavango Adventure Safaris</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#17121F;
+    --purple:#6D3FD9;
+    --purple-deep:#4E2AA8;
+    --purple-light:#A688F2;
+    --purple-wash:#F1ECFC;
+    --gold:#D7A44A;
+    --gold-wash:#FBF2E3;
+    --green:#2F9E5B;
+    --green-wash:#EAF7EF;
+    --red:#D14B4B;
+    --surface:#F5F3FA;
+    --white:#FFFFFF;
+    --muted:#6B6478;
+    --line:#E7E2F2;
+    --radius:16px;
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:var(--font-body);
+    background:var(--surface);
+    color:var(--ink);
+    padding:44px;
+    min-height:100vh;
+  }
+  .wrap{ max-width:1240px; margin:0 auto; }
+
+  .topbar{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    margin-bottom:24px;
+    flex-wrap:wrap;
+    gap:18px;
+  }
+  .topbar h1{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:27px;
+    letter-spacing:-0.01em;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .topbar h1 svg{ width:17px; height:17px; color:var(--muted); cursor:pointer; }
+  .topbar .sub{ font-size:14px; color:var(--muted); margin-top:5px; }
+  .topbar-actions{ display:flex; gap:10px; flex-wrap:wrap; }
+
+  .btn{
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:13.5px;
+    padding:11px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    border:1px solid var(--line);
+    background:var(--white);
+    color:var(--ink);
+    white-space:nowrap;
+  }
+  .btn-primary{ background:var(--purple); color:var(--white); border-color:transparent; box-shadow:0 10px 20px -8px rgba(109,63,217,.5); }
+  .btn-ghost{ background:var(--white); color:var(--ink); }
+
+  .filter-bar{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:20px 28px;
+    margin-bottom:22px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    box-shadow:0 16px 40px -28px rgba(23,18,31,.25);
+  }
+  .filter-bar label{ font-size:14px; font-weight:600; color:var(--ink); }
+  .filter-bar select{
+    padding:11px 16px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    font-family:var(--font-body);
+    font-size:14px;
+    color:var(--ink);
+    min-width:180px;
+  }
+
+  .room-panel{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:30px;
+    box-shadow:0 16px 40px -28px rgba(23,18,31,.25);
+  }
+  .room-head{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    padding-bottom:20px;
+    margin-bottom:24px;
+    border-bottom:1px solid var(--line);
+  }
+  .room-head h2{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:20px;
+    margin-bottom:8px;
+  }
+  .tag-row{ display:flex; align-items:center; gap:10px; }
+  .tag{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding:4px 10px;
+    border-radius:999px;
+    background:var(--purple-wash);
+    color:var(--purple);
+  }
+  .room-head .sub-type{ font-size:13.5px; color:var(--muted); }
+  .acc-id{ font-size:12.5px; color:var(--muted); white-space:nowrap; }
+
+  .rate-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+  }
+  .rate-card{
+    border:1px solid var(--line);
+    border-left:4px solid var(--gold);
+    border-radius:12px;
+    padding:20px 22px;
+    background:var(--surface);
+  }
+  .rate-card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:12px;
+    margin-bottom:6px;
+  }
+  .rate-name{ font-size:14.5px; font-weight:600; line-height:1.35; }
+  .rate-id{ font-size:11.5px; color:var(--muted); white-space:nowrap; }
+  .rate-occupancy{ font-size:12.5px; color:var(--muted); margin-bottom:14px; }
+
+  .price-row{
+    display:flex;
+    gap:22px;
+    margin-bottom:16px;
+  }
+  .price{ }
+  .price .lbl{ font-size:11px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--muted); margin-bottom:2px; }
+  .price .val{ font-family:var(--font-display); font-size:17px; font-weight:600; }
+  .price.rack .val{ color:var(--purple); }
+  .price.sto .val{ color:var(--green); }
+
+  .rate-footer{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .status-pill{
+    font-size:11.5px;
+    font-weight:700;
+    padding:5px 12px;
+    border-radius:999px;
+    background:var(--gold-wash);
+    color:var(--gold);
+  }
+  .rate-actions{ display:flex; gap:14px; }
+  .rate-actions a{
+    font-size:12.5px;
+    font-weight:600;
+    text-decoration:none;
+    cursor:pointer;
+  }
+  .rate-actions .correct{ color:var(--purple); }
+  .rate-actions .approve{ color:var(--green); }
+  .rate-actions .delete{ color:var(--red); }
+
+  @media (max-width:900px){
+    .rate-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div>
+      <h1>
+        Accommodation Rates for Okavango Adventure Safaris
+<!--        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>-->
+      </h1>
+      <div class="sub">Based in Botswana</div>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn btn-ghost">View Uploads</button>
+      <button class="btn btn-primary">Add New Rates</button>
+<!--      <button class="btn btn-ghost">Table View</button>-->
+    </div>
+  </div>
+
+  <div class="filter-bar">
+    <label>Rate Period:</label>
+    <select><option>All periods</option></select>
+    <button class="btn btn-primary">Apply</button>
+  </div>
+
+  <div class="room-panel">
+<!--    <div class="room-head">-->
+<!--      <div>-->
+<!--        <h2>Luxury Rooms</h2>-->
+<!--&lt;!&ndash;        <div class="tag-row">&ndash;&gt;-->
+<!--&lt;!&ndash;          <span class="tag">Built · Building</span>&ndash;&gt;-->
+<!--&lt;!&ndash;          <span class="sub-type">Multi-adult Room</span>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--      </div>-->
+<!--&lt;!&ndash;      <div class="acc-id">Accommodation ID: 79</div>&ndash;&gt;-->
+<!--    </div>-->
+
+    <div class="rate-grid">
+
+      <div class="rate-card">
+        <div class="rate-card-top">
+          <div class="rate-name">Bush Rondavels</div>
+<!--          <div class="rate-id">ID 2648</div>-->
+        </div>
+<!--        <div class="rate-occupancy">Per adult sharing, per night</div>-->
+        <div class="price-row">
+          <div class="price rack"><div class="lbl">Rack</div><div class="val">$445.00</div></div>
+          <div class="price sto"><div class="lbl">STO</div><div class="val">$367.00</div></div>
+        </div>
+        <div class="rate-footer">
+          <span class="status-pill">Pending Approval</span>
+          <div class="rate-actions">
+            <a class="correct">Correct</a><a class="approve">Approve</a><a class="delete">Delete</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="rate-card">
+        <div class="rate-card-top">
+          <div class="rate-name">River Rooms</div>
+<!--          <div class="rate-id">ID 2649</div>-->
+        </div>
+<!--        <div class="rate-occupancy">Per adult sharing, per night</div>-->
+        <div class="price-row">
+          <div class="price rack"><div class="lbl">Rack</div><div class="val">$550.00</div></div>
+          <div class="price sto"><div class="lbl">STO</div><div class="val">$460.00</div></div>
+        </div>
+        <div class="rate-footer">
+          <span class="status-pill">Pending Approval</span>
+          <div class="rate-actions">
+            <a class="correct">Correct</a><a class="approve">Approve</a><a class="delete">Delete</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="rate-card">
+        <div class="rate-card-top">
+          <div class="rate-name">Safari Glamping Tents</div>
+<!--          <div class="rate-id">ID 2650</div>-->
+        </div>
+<!--        <div class="rate-occupancy">Per adult sharing, per night</div>-->
+        <div class="price-row">
+          <div class="price rack"><div class="lbl">Rack</div><div class="val">$600.00</div></div>
+          <div class="price sto"><div class="lbl">STO</div><div class="val">$509.00</div></div>
+        </div>
+        <div class="rate-footer">
+          <span class="status-pill">Pending Approval</span>
+          <div class="rate-actions">
+            <a class="correct">Correct</a><a class="approve">Approve</a><a class="delete">Delete</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="rate-card">
+        <div class="rate-card-top">
+          <div class="rate-name">River Tents</div>
+<!--          <div class="rate-id">ID 2651</div>-->
+        </div>
+<!--        <div class="rate-occupancy">Single adult, per night (with or without children)</div>-->
+        <div class="price-row">
+          <div class="price rack"><div class="lbl">Rack</div><div class="val">$625.00</div></div>
+          <div class="price sto"><div class="lbl">STO</div><div class="val">$510.00</div></div>
+        </div>
+        <div class="rate-footer">
+          <span class="status-pill">Pending Approval</span>
+          <div class="rate-actions">
+            <a class="correct">Correct</a><a class="approve">Approve</a><a class="delete">Delete</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

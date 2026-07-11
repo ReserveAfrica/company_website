@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reserve Africa — The Operating System for African Safari Businesses</title>
+<title>Reserve Africa — For African Safari Businesses</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -585,6 +585,87 @@
   .cta-tagline p{ font-size:13.5px; color:rgba(255,255,255,0.6); margin:2px 0; letter-spacing:0.02em; }
   .cta-tagline p.strong{ color:var(--gold); font-weight:600; }
 
+  /* ---------- CONTACT FORM ---------- */
+  .contact-form{
+    padding:100px 0;
+  }
+  .contact-inner{
+    max-width:800px;
+    margin:0 auto;
+  }
+  .contact-head{
+    text-align:center;
+    margin-bottom:56px;
+  }
+  .contact-head h2{
+    font-size:34px;
+    margin:14px 0 16px;
+    color:var(--ink);
+  }
+  .contact-head p{
+    color:var(--muted);
+    font-size:15.5px;
+    max-width:600px;
+    margin:0 auto;
+  }
+  .contact-form-grid{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+  .form-row{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+  }
+  .form-group{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .form-group.full-width{
+    grid-column:span 2;
+  }
+  .form-group label{
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea{
+    padding:13px 15px;
+    border:1px solid var(--line);
+    border-radius:9px;
+    font-family:var(--font-body);
+    font-size:14.5px;
+    color:var(--ink);
+    background:var(--surface);
+    outline:none;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus{
+    border-color:var(--purple);
+    background:var(--white);
+  }
+  .form-group textarea{
+    resize:vertical;
+    min-height:120px;
+  }
+  .form-actions{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:12px;
+  }
+  .form-note{
+    font-size:12.5px;
+    color:var(--muted);
+    margin:0;
+  }
+
   /* ---------- FOOTER ---------- */
   footer{
     background:var(--ink-soft);
@@ -656,15 +737,15 @@
 
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
-        <li><a href="#platform">Platform</a></li>
-        <li><a href="#product">Product</a></li>
-        <li><a href="#gallery">Gallery</a></li>
+<!--        <li><a href="#platform">Platform</a></li>-->
+        <li><a href="#product">Reserve Studio</a></li>
+<!--        <li><a href="#gallery">Gallery</a></li>-->
         <li><a href="#contact">Contact</a></li>
       </ul>
 
       <div class="nav-right">
         <a href="https://lzeak3dpdd7klltavov5uqj76y0tesds.lambda-url.af-south-1.on.aws/" class="btn btn-ghost">Log in</a>
-        <a href="#contact" class="btn btn-primary">Get started</a>
+<!--        <a href="#contact" class="btn btn-primary">Get started</a>-->
       </div>
     </nav>
   </div>
@@ -679,7 +760,7 @@
           <h1>A platform built for the unique challenges of the safari travel business</h1>
 
 <!--          <p class="lead">Reserve Africa connects agents, tour operators and suppliers with real-time inventory, seamless rate distribution, intelligent itinerary building, quoting, invoicing and financial management — all in one modern platform.</p>-->
-          <p class="lead">Reserve Africa manages customised rates, trip building, quoting and invoicing for African safari agents.</p>
+          <p class="lead">Reserve Studio manages customised rates, trip building, quoting and invoicing for African safari agents.</p>
 <!--        <div class="hero-ctas">-->
 <!--          <a href="#contact" class="btn btn-primary">Get started</a>-->
 <!--          <a href="#product" class="btn btn-ghost">See the platform</a>-->
@@ -709,32 +790,7 @@
       </div>
 
       <div class="hero-visual">
-        <div class="device-card">
-          <div class="device-bar">
-            <span class="device-dot"></span><span class="device-dot"></span><span class="device-dot"></span>
-          </div>
-          <div class="stat-row">
-            <div class="stat-box"><div class="num">1,248</div><div class="lbl">Bookings</div></div>
-            <div class="stat-box"><div class="num">$2.43M</div><div class="lbl">Revenue</div></div>
-            <div class="stat-box"><div class="num">6,356</div><div class="lbl">Guests</div></div>
-            <div class="stat-box"><div class="num">342</div><div class="lbl">Connected</div></div>
-          </div>
-          <div class="chart-row">
-            <div class="chart-box">
-              <div class="lbl">Booking overview</div>
-              <svg width="100%" height="70" viewBox="0 0 220 70" preserveAspectRatio="none">
-                <polyline points="0,55 30,48 60,50 90,32 120,38 150,20 180,26 220,10" fill="none" stroke="#A688F2" stroke-width="2.4"/>
-              </svg>
-            </div>
-            <div class="chart-box">
-              <div class="lbl">Top destinations</div>
-              <svg width="100%" height="70" viewBox="0 0 100 100">
-                <circle cx="50" cy="50" r="34" fill="none" stroke="#3A2C55" stroke-width="14"/>
-                <circle cx="50" cy="50" r="34" fill="none" stroke="#A688F2" stroke-width="14" stroke-dasharray="130 214" stroke-linecap="round" transform="rotate(-90 50 50)"/>
-              </svg>
-            </div>
-          </div>
-        </div>
+        <img src="images/operator dashboard.png" alt="Operator Dashboard" style="width: 100%; height: auto; border-radius: 18px;">
       </div>
     </div>
   </div>
@@ -745,46 +801,47 @@
     <div class="about-grid">
       <div>
         <p class="eyebrow">About Reserve Africa</p>
-        <h2>Built by people who know the safari trade</h2>
-        <p>Reserve Africa is a connected commerce platform built for the safari industry. We give agents, tour operators and suppliers a single, modern system to load rates, build itineraries, manage live availability and get paid — without the spreadsheets and back-and-forth emails.</p>
-        <div class="about-badges">
-          <div class="badge">
-            <div class="badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg></div>
-            <div><h5>Built for Africa</h5><p>Designed around how safari businesses actually operate.</p></div>
+        <h2>By people who know the safari trade</h2>
+        <p>Reserve Africa is building a connected commerce ecosystem built for the safari industry. We give agents, tour operators and suppliers modern systems to load rates, build itineraries, manage availability and get paid — without the spreadsheets and back-and-forth emails and manual hassle</p>
+          <div class="about-badges">
+              <div class="badge">
+                  <div class="badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 16V4M12 4L7.5 8.5M12 4l4.5 4.5"/><path d="M4 15v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg></div>
+                  <div><h5>Your customised rates</h5><p>Custom rates, fees and commission</p></div>
+              </div>
+              <div class="badge">
+                  <div class="badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.3 2.3L16 10"/></svg></div>
+                  <div><h5>Approval built in</h5><p>Rate Review workflow built in for accuracy</p></div>
+              </div>
+              <div class="badge">
+                  <div class="badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M8.5 12h7M8.5 15.5h7M8.5 8.5h3"/></svg></div>
+                  <div><h5>Build to quote, fast</h5><p>Search approved rates, build the trip, and send a client-ready quote in minutes.</p></div>
+              </div>
+              <div class="badge">
+                  <div class="badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M17.5 6.5c-1.8 1.8-1.8 9.2 0 11M6.5 6.5c1.8 1.8 1.8 9.2 0 11"/></svg></div>
+                  <div><h5>Quote in any currency</h5><p>Search and quote in USD, ZAR, EUR, GBP and more, all from one dashboard.</p></div>
+              </div>
           </div>
-          <div class="badge">
-            <div class="badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/></svg></div>
-            <div><h5>Secure &amp; reliable</h5><p>Enterprise-grade security on every transaction.</p></div>
-          </div>
-          <div class="badge">
-            <div class="badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
-            <div><h5>Real-time &amp; intelligent</h5><p>Live inventory and rates, synced across every partner.</p></div>
-          </div>
-          <div class="badge">
-            <div class="badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 14.5c2.6.3 4.5 2.4 4.5 5.5"/></svg></div>
-            <div><h5>Stronger together</h5><p>One network connecting suppliers, operators and agents.</p></div>
-          </div>
-        </div>
       </div>
 
       <div class="map-panel">
-        <svg viewBox="0 0 360 400" width="100%" height="100%">
-          <defs>
-            <radialGradient id="mapg" cx="30%" cy="20%" r="90%">
-              <stop offset="0%" stop-color="#A688F2"/>
-              <stop offset="55%" stop-color="#6D3FD9"/>
-              <stop offset="100%" stop-color="#D7A44A"/>
-            </radialGradient>
-          </defs>
-          <path d="M150 20 C210 15 250 45 260 70 C280 60 300 75 295 100 C320 115 315 150 295 165 C310 200 290 230 260 240 C265 280 245 320 210 340 C205 365 175 385 150 375 C130 390 100 380 95 355 C70 345 65 315 80 295 C55 280 55 245 75 225 C60 200 70 165 95 150 C85 120 105 90 135 80 C130 55 135 30 150 20 Z"
-            fill="url(#mapg)" opacity="0.85"/>
-          <g fill="#17121F" opacity="0.55">
-            <circle cx="120" cy="90" r="2"/><circle cx="140" cy="95" r="2"/><circle cx="160" cy="88" r="2"/>
-            <circle cx="180" cy="120" r="2"/><circle cx="200" cy="140" r="2"/><circle cx="150" cy="160" r="2"/>
-            <circle cx="170" cy="200" r="2"/><circle cx="190" cy="230" r="2"/><circle cx="160" cy="260" r="2"/>
-            <circle cx="140" cy="290" r="2"/><circle cx="180" cy="310" r="2"/><circle cx="150" cy="330" r="2"/>
-          </g>
-        </svg>
+          <img src="images/africa-shape-connected-dots.svg" alt="africa_connected">
+          <!--        <svg viewBox="0 0 360 400" width="100%" height="100%">-->
+<!--          <defs>-->
+<!--            <radialGradient id="mapg" cx="30%" cy="20%" r="90%">-->
+<!--              <stop offset="0%" stop-color="#A688F2"/>-->
+<!--              <stop offset="55%" stop-color="#6D3FD9"/>-->
+<!--              <stop offset="100%" stop-color="#D7A44A"/>-->
+<!--            </radialGradient>-->
+<!--          </defs>-->
+<!--          <path d="M150 20 C210 15 250 45 260 70 C280 60 300 75 295 100 C320 115 315 150 295 165 C310 200 290 230 260 240 C265 280 245 320 210 340 C205 365 175 385 150 375 C130 390 100 380 95 355 C70 345 65 315 80 295 C55 280 55 245 75 225 C60 200 70 165 95 150 C85 120 105 90 135 80 C130 55 135 30 150 20 Z"-->
+<!--            fill="url(#mapg)" opacity="0.85"/>-->
+<!--          <g fill="#17121F" opacity="0.55">-->
+<!--            <circle cx="120" cy="90" r="2"/><circle cx="140" cy="95" r="2"/><circle cx="160" cy="88" r="2"/>-->
+<!--            <circle cx="180" cy="120" r="2"/><circle cx="200" cy="140" r="2"/><circle cx="150" cy="160" r="2"/>-->
+<!--            <circle cx="170" cy="200" r="2"/><circle cx="190" cy="230" r="2"/><circle cx="160" cy="260" r="2"/>-->
+<!--            <circle cx="140" cy="290" r="2"/><circle cx="180" cy="310" r="2"/><circle cx="150" cy="330" r="2"/>-->
+<!--          </g>-->
+<!--        </svg>-->
       </div>
     </div>
   </div>
@@ -793,7 +850,7 @@
 <section class="platform" id="platform">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow" style="justify-content:center;">The Reserve Africa Platform</p>
+      <p class="eyebrow" style="justify-content:center;">Reserve Studio</p>
       <h2>Five pillars, one workflow</h2>
     </div>
       <div class="platform-grid">
@@ -832,43 +889,15 @@
       <div class="product-head">
         <p class="eyebrow">Reserve Studio</p>
         <h2>Customised for African Safari Agents</h2>
-        <p>Bookings, revenue, top destinations and cash flow — one studio for every safari agent.</p>
+        <p>Suppliers, rates and approvals — one dashboard for every safari agent.</p>
       </div>
 
       <div class="product-shot">
         <div class="shot-top">
-          <div class="shot-side">
-            <div class="side-logo">RESERVE AFRICA</div>
-            <div class="side-item active">Dashboard</div>
-            <div class="side-item">Bookings</div>
-            <div class="side-item">Inventory</div>
-            <div class="side-item">Guests</div>
-            <div class="side-item">Suppliers</div>
-            <div class="side-item">Finance</div>
-            <div class="side-item">Reports</div>
-            <div class="side-item">Settings</div>
-          </div>
           <div class="shot-main">
-            <div class="shot-stats">
-              <div class="shot-stat"><div class="num">1,248</div><div class="lbl">Bookings</div></div>
-              <div class="shot-stat"><div class="num">$2.43M</div><div class="lbl">Revenue</div></div>
-              <div class="shot-stat"><div class="num">6,356</div><div class="lbl">Guests</div></div>
-              <div class="shot-stat"><div class="num">342</div><div class="lbl">Connected</div></div>
-            </div>
-            <div class="shot-charts">
-              <div class="shot-chart">
-                <div class="lbl">Booking overview</div>
-                <svg width="100%" height="70" viewBox="0 0 220 70" preserveAspectRatio="none">
-                  <polyline points="0,55 30,48 60,50 90,32 120,38 150,20 180,26 220,10" fill="none" stroke="#6D3FD9" stroke-width="2.4"/>
-                </svg>
-              </div>
-              <div class="shot-chart">
-                <div class="lbl">Top destinations</div>
-                <svg width="100%" height="70" viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="34" fill="none" stroke="#EDE7FA" stroke-width="14"/>
-                  <circle cx="50" cy="50" r="34" fill="none" stroke="#6D3FD9" stroke-width="14" stroke-dasharray="130 214" stroke-linecap="round" transform="rotate(-90 50 50)"/>
-                </svg>
-              </div>
+            <div style="position: relative; width: 100%; height: 400px;">
+              <img src="images/rate tiles.png" alt="Rate Tiles" style="position: absolute; top: 0; left: 0; width: 60%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+              <img src="images/quote_search.png" alt="Quote Search" style="position: absolute; top: 20%; right: 0; width: 55%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); z-index: 10;">
             </div>
           </div>
         </div>
@@ -880,19 +909,19 @@
 <section class="gallery" id="gallery">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow" style="justify-content:center;">Gallery</p>
-      <h2>Imagery placeholders</h2>
+      <p class="eyebrow" style="justify-content:center;">A modern agent experience — built for Africa</p>
+<!--      <h2>Imagery placeholders</h2>-->
     </div>
     <div class="gallery-grid">
-      <div>Replace with sunset / landscape photo</div>
-      <div>Replace with aerial delta photo</div>
-      <div>Replace with wildlife photo</div>
-      <div>Replace with abstract texture</div>
+      <img src="images/sunset.jpeg" alt="Sunset landscape photo">
+      <img src="images/arial.jpeg" alt="Aerial delta photo">
+      <img src="images/eles.jpeg" alt="Wildlife photo">
+      <img src="images/game drive.jpeg" alt="Game drive abstract texture">
     </div>
   </div>
 </section>
 
-<section class="cta-banner" id="contact">
+<section class="cta-banner" id="cta">
   <div class="wrap">
     <div class="cta-inner">
       <div class="logo">
@@ -916,14 +945,77 @@
   </div>
 </section>
 
+<section class="contact-form" id="contact">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="contact-head">
+        <p class="eyebrow" style="justify-content:flex-start;">Get in touch</p>
+        <h2>Contact us</h2>
+        <p>Have questions or want to learn more about Reserve Africa? Fill out the form below and our team will get back to you shortly.</p>
+      </div>
+
+      <form class="contact-form-grid">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name*</label>
+            <input type="text" id="firstName" name="firstName" required>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name*</label>
+            <input type="text" id="lastName" name="lastName" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email*</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="company">Company Name*</label>
+            <input type="text" id="company" name="company" required>
+          </div>
+          <div class="form-group">
+            <label for="role">Your Role*</label>
+            <select id="role" name="role" required>
+              <option value="" disabled selected>Select your role</option>
+              <option value="agent">Travel Agent</option>
+              <option value="operator">Tour Operator</option>
+              <option value="supplier">Supplier</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group full-width">
+          <label for="message">Message*</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Send Message</button>
+          <p class="form-note">* Required fields</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <div class="footer-badges">
       <div class="footer-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 18a4 4 0 010-8 5 5 0 019.6-1.5A4.5 4.5 0 0119 18H6z"/></svg>Cloud-based &amp; scalable</div>
-      <div class="footer-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>Enterprise-grade security</div>
-      <div class="footer-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Real-time sync &amp; updates</div>
+      <div class="footer-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>Secure</div>
+      <div class="footer-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>24/7 Support</div>
       <div class="footer-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></svg>Mobile-friendly access</div>
-      <div class="footer-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 15v-3a8 8 0 0116 0v3M4 15a2 2 0 002 2h1v-5H6a2 2 0 00-2 2v1zM20 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2v1z"/></svg>Dedicated support &amp; training</div>
+      <div class="footer-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 15v-3a8 8 0 0116 0v3M4 15a2 2 0 002 2h1v-5H6a2 2 0 00-2 2v1zM20 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2v1z"/></svg>Free Training</div>
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 Reserve Africa. All rights reserved.</span>
@@ -937,26 +1029,14 @@
 </footer>
 
 <script>
-  const trigger = document.getElementById('loginTrigger');
-  const panel = document.getElementById('loginPanel');
-
-  trigger.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const open = panel.classList.toggle('open');
-    trigger.setAttribute('aria-expanded', open);
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!panel.contains(e.target) && !trigger.contains(e.target)) {
-      panel.classList.remove('open');
-      trigger.setAttribute('aria-expanded', 'false');
-    }
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      panel.classList.remove('open');
-      trigger.setAttribute('aria-expanded', 'false');
+  // Contact form submission handler
+  document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.querySelector('.contact-form-grid');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Thank you for your interest! This is a demo form.');
+      });
     }
   });
 </script>
