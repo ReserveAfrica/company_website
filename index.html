@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reserve Africa — The Operating System for African Safari Businesses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#17121F;
+    --ink-soft:#231B34;
+    --purple:#6D3FD9;
+    --purple-deep:#4E2AA8;
+    --purple-light:#A688F2;
+    --purple-wash:#F1ECFC;
+    --gold:#D7A44A;
+    --surface:#F7F5FB;
+    --white:#FFFFFF;
+    --muted:#6B6478;
+    --line:#E4DFF0;
+    --radius:14px;
+    --shadow:0 20px 50px -20px rgba(23,18,31,0.25);
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  .wrap{
+    max-width:1240px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  h1,h2,h3,h4{
+    font-family:var(--font-display);
+    font-weight:600;
+    letter-spacing:-0.01em;
+    line-height:1.1;
+  }
+  .eyebrow{
+    font-family:var(--font-body);
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--purple);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:22px;
+    height:2px;
+    background:var(--gold);
+    display:inline-block;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:13px 26px;
+    border-radius:999px;
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:14.5px;
+    cursor:pointer;
+    border:1px solid transparent;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+  }
+  .btn-primary{
+    background:var(--purple);
+    color:var(--white);
+    box-shadow:0 10px 24px -8px rgba(109,63,217,0.55);
+  }
+  .btn-primary:hover{ background:var(--purple-deep); transform:translateY(-1px); }
+  .btn-ghost{
+    background:transparent;
+    border-color:rgba(255,255,255,0.28);
+    color:var(--white);
+  }
+  .btn-ghost:hover{ background:rgba(255,255,255,0.1); }
+  .btn-outline{
+    background:transparent;
+    border-color:var(--line);
+    color:var(--ink);
+  }
+  .btn-outline:hover{ border-color:var(--purple); color:var(--purple); }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(23,18,31,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 0;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .logo svg{ width:34px; height:34px; }
+  .logo-text{
+    display:flex;
+    flex-direction:column;
+    line-height:1;
+  }
+  .logo-text .r1{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:19px;
+    color:var(--white);
+    letter-spacing:0.04em;
+  }
+  .logo-text .r2{
+    font-family:var(--font-display);
+    font-weight:500;
+    font-size:11px;
+    color:var(--purple-light);
+    letter-spacing:0.32em;
+  }
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:34px;
+  }
+  .nav-links a{
+    color:rgba(255,255,255,0.78);
+    font-size:14.5px;
+    font-weight:500;
+    transition:color .15s ease;
+  }
+  .nav-links a:hover{ color:var(--white); }
+  .nav-right{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    position:relative;
+  }
+
+  /* Login dropdown */
+  .login-wrap{ position:relative; }
+  .login-trigger{
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.28);
+    color:var(--white);
+    padding:11px 22px;
+    border-radius:999px;
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:14.5px;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .login-trigger:hover{ background:rgba(255,255,255,0.1); }
+  .login-trigger svg{ width:12px; height:12px; transition:transform .2s ease; }
+  .login-trigger[aria-expanded="true"] svg{ transform:rotate(180deg); }
+
+  .login-panel{
+    position:absolute;
+    top:calc(100% + 14px);
+    right:0;
+    width:340px;
+    background:var(--white);
+    border-radius:16px;
+    box-shadow:0 30px 60px -18px rgba(23,18,31,0.45);
+    border:1px solid var(--line);
+    padding:26px;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-8px);
+    transition:opacity .2s ease, transform .2s ease, visibility .2s ease;
+  }
+  .login-panel.open{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+  }
+  .login-panel::before{
+    content:'';
+    position:absolute;
+    top:-7px;
+    right:34px;
+    width:14px;
+    height:14px;
+    background:var(--white);
+    border-left:1px solid var(--line);
+    border-top:1px solid var(--line);
+    transform:rotate(45deg);
+  }
+  .login-panel h4{
+    font-size:16.5px;
+    color:var(--ink);
+    margin-bottom:4px;
+  }
+  .login-sub{
+    font-size:13px;
+    color:var(--muted);
+    margin-bottom:18px;
+  }
+  .field{
+    margin-bottom:14px;
+  }
+  .field label{
+    display:block;
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--ink);
+    margin-bottom:6px;
+  }
+  .field input{
+    width:100%;
+    padding:11px 13px;
+    border:1px solid var(--line);
+    border-radius:9px;
+    font-family:var(--font-body);
+    font-size:14px;
+    color:var(--ink);
+    background:var(--surface);
+    outline:none;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .field input:focus{
+    border-color:var(--purple);
+    background:var(--white);
+  }
+  .login-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:18px;
+    font-size:12.5px;
+  }
+  .login-row label{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    color:var(--muted);
+  }
+  .login-row a{
+    color:var(--purple);
+    font-weight:600;
+  }
+  .login-panel .btn-primary{
+    width:100%;
+    padding:12px;
+  }
+  .login-footer{
+    text-align:center;
+    font-size:13px;
+    color:var(--muted);
+    margin-top:16px;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+  }
+  .login-footer a{ color:var(--purple); font-weight:600; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--ink);
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(109,63,217,0.35), transparent 45%),
+      radial-gradient(circle at 85% 80%, rgba(215,164,74,0.12), transparent 50%);
+    color:var(--white);
+    padding:96px 0 90px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:64px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:52px;
+    margin:22px 0 24px;
+  }
+  .hero h1 span{ color:var(--purple-light); }
+  .hero p.lead{
+    font-size:17px;
+    color:rgba(255,255,255,0.7);
+    max-width:480px;
+    margin-bottom:34px;
+  }
+  .hero-ctas{
+    display:flex;
+    gap:14px;
+    margin-bottom:46px;
+  }
+  .hero-pillars{
+    display:flex;
+    flex-wrap:wrap;
+    gap:28px;
+    padding-top:30px;
+    border-top:1px solid rgba(255,255,255,0.12);
+  }
+  .pillar{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:13.5px;
+    color:rgba(255,255,255,0.75);
+    font-weight:500;
+  }
+  .pillar svg{ width:20px; height:20px; color:var(--gold); flex-shrink:0; }
+
+  .hero-visual{
+    position:relative;
+  }
+  .device-card{
+    background:linear-gradient(160deg, #211932, #171224);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:18px;
+    padding:18px;
+    box-shadow:0 40px 80px -20px rgba(0,0,0,0.6);
+  }
+  .device-bar{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    padding-bottom:14px;
+    margin-bottom:14px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .device-dot{ width:9px; height:9px; border-radius:50%; background:rgba(255,255,255,0.2); }
+  .stat-row{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin-bottom:14px;
+  }
+  .stat-box{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:10px;
+    padding:12px 10px;
+  }
+  .stat-box .num{ font-family:var(--font-display); font-size:19px; font-weight:600; color:var(--white); }
+  .stat-box .lbl{ font-size:10px; color:rgba(255,255,255,0.5); margin-top:3px; }
+  .chart-row{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:10px;
+  }
+  .chart-box{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:10px;
+    padding:14px;
+    height:130px;
+  }
+  .chart-box .lbl{ font-size:10.5px; color:rgba(255,255,255,0.5); margin-bottom:10px; }
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    padding:100px 0;
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.95fr 1.05fr;
+    gap:70px;
+    align-items:center;
+  }
+  .about h2{
+    font-size:36px;
+    margin:14px 0 20px;
+    color:var(--ink);
+  }
+  .about p{
+    color:var(--muted);
+    font-size:15.5px;
+    max-width:480px;
+    margin-bottom:36px;
+  }
+  .about-badges{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+  }
+  .badge{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+  }
+  .badge-icon{
+    width:40px; height:40px;
+    border-radius:10px;
+    background:var(--purple-wash);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .badge-icon svg{ width:19px; height:19px; color:var(--purple); }
+  .badge h5{ font-family:var(--font-display); font-size:14.5px; margin-bottom:3px; }
+  .badge p{ font-size:12.5px; color:var(--muted); margin:0; max-width:none; }
+
+  .map-panel{
+    position:relative;
+    aspect-ratio:1/1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  /* ---------- PLATFORM ---------- */
+  .platform{
+    background:var(--surface);
+    padding:100px 0;
+  }
+  .section-head{
+    text-align:center;
+    max-width:600px;
+    margin:0 auto 56px;
+  }
+  .section-head h2{
+    font-size:34px;
+    margin:14px 0 0;
+    color:var(--ink);
+  }
+  .platform-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:20px;
+  }
+  .plat-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px 22px;
+    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .plat-card:hover{
+    transform:translateY(-4px);
+    box-shadow:var(--shadow);
+    border-color:transparent;
+  }
+  .plat-icon{
+    width:44px; height:44px;
+    border-radius:11px;
+    background:var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:18px;
+  }
+  .plat-icon svg{ width:21px; height:21px; color:var(--gold); }
+  .plat-card h4{ font-size:16px; margin-bottom:8px; color:var(--ink); }
+  .plat-card p{ font-size:13px; color:var(--muted); }
+
+  /* ---------- PRODUCT PREVIEW ---------- */
+  .product{
+    padding:100px 0;
+    overflow:hidden;
+  }
+  .product-inner{
+    background:var(--ink);
+    border-radius:28px;
+    padding:70px 60px;
+    position:relative;
+    color:var(--white);
+    background-image:radial-gradient(circle at 80% 0%, rgba(109,63,217,0.4), transparent 55%);
+  }
+  .product-head{
+    max-width:520px;
+    margin-bottom:50px;
+  }
+  .product-head h2{ font-size:32px; margin:14px 0 16px; }
+  .product-head p{ color:rgba(255,255,255,0.65); font-size:15px; }
+  .product-shot{
+    background:var(--surface);
+    border-radius:16px;
+    padding:16px;
+    box-shadow:0 50px 90px -20px rgba(0,0,0,0.55);
+  }
+  .shot-top{
+    display:flex;
+    gap:16px;
+  }
+  .shot-side{
+    width:180px;
+    background:var(--white);
+    border-radius:10px;
+    padding:16px 12px;
+    flex-shrink:0;
+  }
+  .shot-side .side-logo{ font-family:var(--font-display); font-weight:700; font-size:12px; color:var(--purple); margin-bottom:18px; }
+  .shot-side .side-item{
+    font-size:12px;
+    color:var(--muted);
+    padding:9px 10px;
+    border-radius:7px;
+    margin-bottom:3px;
+  }
+  .shot-side .side-item.active{ background:var(--purple-wash); color:var(--purple); font-weight:600; }
+  .shot-main{
+    flex:1;
+    background:var(--white);
+    border-radius:10px;
+    padding:20px;
+  }
+  .shot-stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-bottom:16px;
+  }
+  .shot-stat{
+    border:1px solid var(--line);
+    border-radius:9px;
+    padding:12px;
+  }
+  .shot-stat .num{ font-family:var(--font-display); font-weight:600; font-size:18px; color:var(--ink); }
+  .shot-stat .lbl{ font-size:10px; color:var(--muted); margin-top:2px; }
+  .shot-charts{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:12px;
+  }
+  .shot-chart{
+    border:1px solid var(--line);
+    border-radius:9px;
+    padding:14px;
+    height:120px;
+  }
+  .shot-chart .lbl{ font-size:10.5px; color:var(--muted); margin-bottom:8px; }
+
+  /* ---------- GALLERY ---------- */
+  .gallery{
+    padding:0 0 100px;
+  }
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+  }
+  .gallery-grid div{
+    aspect-ratio:4/5;
+    border-radius:14px;
+    background:linear-gradient(160deg, var(--purple-wash), var(--surface));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--muted);
+    font-size:12px;
+    text-align:center;
+    padding:14px;
+    border:1px dashed var(--line);
+  }
+
+  /* ---------- CTA BANNER ---------- */
+  .cta-banner{
+    background:var(--ink);
+    color:var(--white);
+    padding:56px 0;
+  }
+  .cta-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:30px;
+  }
+  .cta-inner .logo-text .r1{ font-size:20px; }
+  .cta-tagline{ text-align:right; }
+  .cta-tagline p{ font-size:13.5px; color:rgba(255,255,255,0.6); margin:2px 0; letter-spacing:0.02em; }
+  .cta-tagline p.strong{ color:var(--gold); font-weight:600; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink-soft);
+    color:rgba(255,255,255,0.6);
+    padding:40px 0;
+  }
+  .footer-badges{
+    display:flex;
+    justify-content:center;
+    gap:44px;
+    flex-wrap:wrap;
+    padding-bottom:30px;
+    margin-bottom:24px;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+  .footer-badge{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-size:12.5px;
+  }
+  .footer-badge svg{ width:17px; height:17px; color:var(--purple-light); }
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:12.5px;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .footer-bottom a{ color:rgba(255,255,255,0.6); margin-left:20px; }
+  .footer-bottom a:hover{ color:var(--white); }
+
+  @media (max-width: 980px){
+    .hero-grid, .about-grid{ grid-template-columns:1fr; }
+    .platform-grid{ grid-template-columns:repeat(2,1fr); }
+    .gallery-grid{ grid-template-columns:repeat(2,1fr); }
+    .nav-links{ display:none; }
+    .hero h1{ font-size:38px; }
+    .shot-top{ flex-direction:column; }
+    .shot-side{ width:100%; }
+    .cta-tagline{ text-align:left; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="logo">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 40 L10 8 L28 8 C33 8 36 12 33 17 C31 20 27 21 24 21 L36 40" stroke="url(#g1)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="10" cy="8" r="3" fill="#A688F2"/>
+          <circle cx="24" cy="21" r="3" fill="#A688F2"/>
+          <circle cx="36" cy="40" r="3" fill="#A688F2"/>
+          <defs>
+            <linearGradient id="g1" x1="10" y1="8" x2="36" y2="40" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#A688F2"/>
+              <stop offset="1" stop-color="#6D3FD9"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="logo-text">
+          <span class="r1">RESERVE</span>
+          <span class="r2">AFRICA</span>
+        </div>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#platform">Platform</a></li>
+        <li><a href="#product">Product</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <a href="https://lzeak3dpdd7klltavov5uqj76y0tesds.lambda-url.af-south-1.on.aws/" class="btn btn-ghost">Log in</a>
+        <a href="#contact" class="btn btn-primary">Get started</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">The Operating System for African Safari Businesses</p>
+        <h1>Run every part of your <span>safari business</span> from one platform</h1>
+        <p class="lead">Reserve Africa connects agents, tour operators and suppliers with real-time inventory, seamless rate distribution, intelligent itinerary building, quoting, invoicing and financial management — all in one modern platform.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary">Get started</a>
+          <a href="#product" class="btn btn-ghost">See the platform</a>
+        </div>
+        <div class="hero-pillars">
+          <div class="pillar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="6" r="2.4"/><circle cx="6" cy="18" r="2.4"/><circle cx="18" cy="18" r="2.4"/><path d="M12 8.4V13M12 13L7.6 16M12 13l4.4 3"/></svg>
+            Connect
+          </div>
+          <div class="pillar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg>
+            Build
+          </div>
+          <div class="pillar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v3.5M16 3v3.5"/></svg>
+            Manage
+          </div>
+          <div class="pillar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 13h6M9 17h6"/></svg>
+            Finance
+          </div>
+          <div class="pillar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>
+            Insights
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="device-card">
+          <div class="device-bar">
+            <span class="device-dot"></span><span class="device-dot"></span><span class="device-dot"></span>
+          </div>
+          <div class="stat-row">
+            <div class="stat-box"><div class="num">1,248</div><div class="lbl">Bookings</div></div>
+            <div class="stat-box"><div class="num">$2.43M</div><div class="lbl">Revenue</div></div>
+            <div class="stat-box"><div class="num">6,356</div><div class="lbl">Guests</div></div>
+            <div class="stat-box"><div class="num">342</div><div class="lbl">Connected</div></div>
+          </div>
+          <div class="chart-row">
+            <div class="chart-box">
+              <div class="lbl">Booking overview</div>
+              <svg width="100%" height="70" viewBox="0 0 220 70" preserveAspectRatio="none">
+                <polyline points="0,55 30,48 60,50 90,32 120,38 150,20 180,26 220,10" fill="none" stroke="#A688F2" stroke-width="2.4"/>
+              </svg>
+            </div>
+            <div class="chart-box">
+              <div class="lbl">Top destinations</div>
+              <svg width="100%" height="70" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="34" fill="none" stroke="#3A2C55" stroke-width="14"/>
+                <circle cx="50" cy="50" r="34" fill="none" stroke="#A688F2" stroke-width="14" stroke-dasharray="130 214" stroke-linecap="round" transform="rotate(-90 50 50)"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <p class="eyebrow">About Reserve Africa</p>
+        <h2>Built by people who know the safari trade</h2>
+        <p>Reserve Africa is a connected commerce platform built for the safari industry. We give agents, tour operators and suppliers a single, modern system to load rates, build itineraries, manage live availability and get paid — without the spreadsheets and back-and-forth emails.</p>
+        <div class="about-badges">
+          <div class="badge">
+            <div class="badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg></div>
+            <div><h5>Built for Africa</h5><p>Designed around how safari businesses actually operate.</p></div>
+          </div>
+          <div class="badge">
+            <div class="badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/></svg></div>
+            <div><h5>Secure &amp; reliable</h5><p>Enterprise-grade security on every transaction.</p></div>
+          </div>
+          <div class="badge">
+            <div class="badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+            <div><h5>Real-time &amp; intelligent</h5><p>Live inventory and rates, synced across every partner.</p></div>
+          </div>
+          <div class="badge">
+            <div class="badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 14.5c2.6.3 4.5 2.4 4.5 5.5"/></svg></div>
+            <div><h5>Stronger together</h5><p>One network connecting suppliers, operators and agents.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-panel">
+        <svg viewBox="0 0 360 400" width="100%" height="100%">
+          <defs>
+            <radialGradient id="mapg" cx="30%" cy="20%" r="90%">
+              <stop offset="0%" stop-color="#A688F2"/>
+              <stop offset="55%" stop-color="#6D3FD9"/>
+              <stop offset="100%" stop-color="#D7A44A"/>
+            </radialGradient>
+          </defs>
+          <path d="M150 20 C210 15 250 45 260 70 C280 60 300 75 295 100 C320 115 315 150 295 165 C310 200 290 230 260 240 C265 280 245 320 210 340 C205 365 175 385 150 375 C130 390 100 380 95 355 C70 345 65 315 80 295 C55 280 55 245 75 225 C60 200 70 165 95 150 C85 120 105 90 135 80 C130 55 135 30 150 20 Z"
+            fill="url(#mapg)" opacity="0.85"/>
+          <g fill="#17121F" opacity="0.55">
+            <circle cx="120" cy="90" r="2"/><circle cx="140" cy="95" r="2"/><circle cx="160" cy="88" r="2"/>
+            <circle cx="180" cy="120" r="2"/><circle cx="200" cy="140" r="2"/><circle cx="150" cy="160" r="2"/>
+            <circle cx="170" cy="200" r="2"/><circle cx="190" cy="230" r="2"/><circle cx="160" cy="260" r="2"/>
+            <circle cx="140" cy="290" r="2"/><circle cx="180" cy="310" r="2"/><circle cx="150" cy="330" r="2"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="platform" id="platform">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" style="justify-content:center;">The Reserve Africa Platform</p>
+      <h2>Five pillars, one workflow</h2>
+    </div>
+    <div class="platform-grid">
+      <div class="plat-card">
+        <div class="plat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="6" r="2.4"/><circle cx="6" cy="18" r="2.4"/><circle cx="18" cy="18" r="2.4"/><path d="M12 8.4V13M12 13L7.6 16M12 13l4.4 3"/></svg></div>
+        <h4>Connect</h4>
+        <p>Rate loading and distribution for suppliers, in real time.</p>
+      </div>
+      <div class="plat-card">
+        <div class="plat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></div>
+        <h4>Studio</h4>
+        <p>Itinerary building, quoting and proposals that win.</p>
+      </div>
+      <div class="plat-card">
+        <div class="plat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+        <h4>Live</h4>
+        <p>Live inventory and real-time availability, always.</p>
+      </div>
+      <div class="plat-card">
+        <div class="plat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 13h6M9 17h6"/></svg></div>
+        <h4>Finance</h4>
+        <p>Invoicing, payments and financial management.</p>
+      </div>
+      <div class="plat-card">
+        <div class="plat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></div>
+        <h4>Insights</h4>
+        <p>Performance analytics and business intelligence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="product" id="product">
+  <div class="wrap">
+    <div class="product-inner">
+      <div class="product-head">
+        <p class="eyebrow">The Dashboard</p>
+        <h2>Everything your team needs, at a glance</h2>
+        <p>Bookings, revenue, top destinations and cash flow — one view for every stakeholder in your business, updated in real time.</p>
+      </div>
+
+      <div class="product-shot">
+        <div class="shot-top">
+          <div class="shot-side">
+            <div class="side-logo">RESERVE AFRICA</div>
+            <div class="side-item active">Dashboard</div>
+            <div class="side-item">Bookings</div>
+            <div class="side-item">Inventory</div>
+            <div class="side-item">Guests</div>
+            <div class="side-item">Suppliers</div>
+            <div class="side-item">Finance</div>
+            <div class="side-item">Reports</div>
+            <div class="side-item">Settings</div>
+          </div>
+          <div class="shot-main">
+            <div class="shot-stats">
+              <div class="shot-stat"><div class="num">1,248</div><div class="lbl">Bookings</div></div>
+              <div class="shot-stat"><div class="num">$2.43M</div><div class="lbl">Revenue</div></div>
+              <div class="shot-stat"><div class="num">6,356</div><div class="lbl">Guests</div></div>
+              <div class="shot-stat"><div class="num">342</div><div class="lbl">Connected</div></div>
+            </div>
+            <div class="shot-charts">
+              <div class="shot-chart">
+                <div class="lbl">Booking overview</div>
+                <svg width="100%" height="70" viewBox="0 0 220 70" preserveAspectRatio="none">
+                  <polyline points="0,55 30,48 60,50 90,32 120,38 150,20 180,26 220,10" fill="none" stroke="#6D3FD9" stroke-width="2.4"/>
+                </svg>
+              </div>
+              <div class="shot-chart">
+                <div class="lbl">Top destinations</div>
+                <svg width="100%" height="70" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="34" fill="none" stroke="#EDE7FA" stroke-width="14"/>
+                  <circle cx="50" cy="50" r="34" fill="none" stroke="#6D3FD9" stroke-width="14" stroke-dasharray="130 214" stroke-linecap="round" transform="rotate(-90 50 50)"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" style="justify-content:center;">Gallery</p>
+      <h2>Imagery placeholders</h2>
+    </div>
+    <div class="gallery-grid">
+      <div>Replace with sunset / landscape photo</div>
+      <div>Replace with aerial delta photo</div>
+      <div>Replace with wildlife photo</div>
+      <div>Replace with abstract texture</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner" id="contact">
+  <div class="wrap">
+    <div class="cta-inner">
+      <div class="logo">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+          <path d="M10 40 L10 8 L28 8 C33 8 36 12 33 17 C31 20 27 21 24 21 L36 40" stroke="#A688F2" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="10" cy="8" r="3" fill="#A688F2"/>
+          <circle cx="24" cy="21" r="3" fill="#A688F2"/>
+          <circle cx="36" cy="40" r="3" fill="#A688F2"/>
+        </svg>
+        <div class="logo-text">
+          <span class="r1">RESERVE</span>
+          <span class="r2">AFRICA</span>
+        </div>
+      </div>
+      <div class="cta-tagline">
+        <p>SMARTER CONNECTIONS.</p>
+        <p>SEAMLESS OPERATIONS.</p>
+        <p class="strong">STRONGER SAFARI BUSINESSES.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-badges">
+      <div class="footer-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 18a4 4 0 010-8 5 5 0 019.6-1.5A4.5 4.5 0 0119 18H6z"/></svg>Cloud-based &amp; scalable</div>
+      <div class="footer-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>Enterprise-grade security</div>
+      <div class="footer-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Real-time sync &amp; updates</div>
+      <div class="footer-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></svg>Mobile-friendly access</div>
+      <div class="footer-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 15v-3a8 8 0 0116 0v3M4 15a2 2 0 002 2h1v-5H6a2 2 0 00-2 2v1zM20 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2v1z"/></svg>Dedicated support &amp; training</div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Reserve Africa. All rights reserved.</span>
+      <div>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const trigger = document.getElementById('loginTrigger');
+  const panel = document.getElementById('loginPanel');
+
+  trigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const open = panel.classList.toggle('open');
+    trigger.setAttribute('aria-expanded', open);
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!panel.contains(e.target) && !trigger.contains(e.target)) {
+      panel.classList.remove('open');
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      panel.classList.remove('open');
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
+
+</body>
+</html>
