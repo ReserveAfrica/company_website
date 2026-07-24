@@ -117,28 +117,8 @@
   .logo{
     display:flex;
     align-items:center;
-    gap:12px;
   }
-  .logo svg{ width:34px; height:34px; }
-  .logo-text{
-    display:flex;
-    flex-direction:column;
-    line-height:1;
-  }
-  .logo-text .r1{
-    font-family:var(--font-display);
-    font-weight:700;
-    font-size:19px;
-    color:var(--white);
-    letter-spacing:0.04em;
-  }
-  .logo-text .r2{
-    font-family:var(--font-display);
-    font-weight:500;
-    font-size:11px;
-    color:var(--purple-light);
-    letter-spacing:0.32em;
-  }
+  .logo svg{ height:42px; width:auto; display:block; }
   .nav-links{
     display:flex;
     align-items:center;
@@ -580,7 +560,6 @@
     flex-wrap:wrap;
     gap:30px;
   }
-  .cta-inner .logo-text .r1{ font-size:20px; }
   .cta-tagline{ text-align:right; }
   .cta-tagline p{ font-size:13.5px; color:rgba(255,255,255,0.6); margin:2px 0; letter-spacing:0.02em; }
   .cta-tagline p.strong{ color:var(--gold); font-weight:600; }
@@ -719,22 +698,48 @@
   <div class="wrap">
     <nav>
       <div class="logo">
-        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 40 L10 8 L28 8 C33 8 36 12 33 17 C31 20 27 21 24 21 L36 40" stroke="url(#g1)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <circle cx="10" cy="8" r="3" fill="#A688F2"/>
-          <circle cx="24" cy="21" r="3" fill="#A688F2"/>
-          <circle cx="36" cy="40" r="3" fill="#A688F2"/>
-          <defs>
-            <linearGradient id="g1" x1="10" y1="8" x2="36" y2="40" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#A688F2"/>
-              <stop offset="1" stop-color="#6D3FD9"/>
-            </linearGradient>
-          </defs>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 600 200"
+          role="img"
+          aria-label="Reserve Africa"
+        >
+          <!-- Stylised R mark -->
+          <g fill="none" stroke="#7C3AED" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Left vertical stem -->
+            <path d="M60 30 L60 180" />
+            <!-- Top curved bowl of the R -->
+            <path d="M60 30 Q150 30 150 85 Q150 130 90 130" />
+            <!-- Diagonal leg -->
+            <path d="M95 125 L165 185" />
+            <!-- Inner accent stroke -->
+            <path d="M85 60 Q125 75 120 110" stroke-width="12" opacity="0.9" />
+          </g>
+          <!-- Wordmark: RESERVE -->
+          <text
+            x="200"
+            y="120"
+            fill="#FFFFFF"
+            font-family="Montserrat, 'Helvetica Neue', Arial, sans-serif"
+            font-weight="700"
+            font-size="82"
+            letter-spacing="4"
+          >
+            RESERVE
+          </text>
+          <!-- Tagline: AFRICA -->
+          <text
+            x="202"
+            y="165"
+            fill="#7C3AED"
+            font-family="Montserrat, 'Helvetica Neue', Arial, sans-serif"
+            font-weight="500"
+            font-size="34"
+            letter-spacing="18"
+          >
+            AFRICA
+          </text>
         </svg>
-        <div class="logo-text">
-          <span class="r1">RESERVE</span>
-          <span class="r2">AFRICA</span>
-        </div>
       </div>
 
       <ul class="nav-links">
@@ -927,16 +932,42 @@
   <div class="wrap">
     <div class="cta-inner">
       <div class="logo">
-        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
-          <path d="M10 40 L10 8 L28 8 C33 8 36 12 33 17 C31 20 27 21 24 21 L36 40" stroke="#A688F2" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <circle cx="10" cy="8" r="3" fill="#A688F2"/>
-          <circle cx="24" cy="21" r="3" fill="#A688F2"/>
-          <circle cx="36" cy="40" r="3" fill="#A688F2"/>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 600 200"
+          role="img"
+          aria-label="Reserve Africa"
+        >
+          <!-- Stylised R mark -->
+          <g fill="none" stroke="#7C3AED" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M60 30 L60 180" />
+            <path d="M60 30 Q150 30 150 85 Q150 130 90 130" />
+            <path d="M95 125 L165 185" />
+            <path d="M85 60 Q125 75 120 110" stroke-width="12" opacity="0.9" />
+          </g>
+          <text
+            x="200"
+            y="120"
+            fill="#FFFFFF"
+            font-family="Montserrat, 'Helvetica Neue', Arial, sans-serif"
+            font-weight="700"
+            font-size="82"
+            letter-spacing="4"
+          >
+            RESERVE
+          </text>
+          <text
+            x="202"
+            y="165"
+            fill="#7C3AED"
+            font-family="Montserrat, 'Helvetica Neue', Arial, sans-serif"
+            font-weight="500"
+            font-size="34"
+            letter-spacing="18"
+          >
+            AFRICA
+          </text>
         </svg>
-        <div class="logo-text">
-          <span class="r1">RESERVE</span>
-          <span class="r2">AFRICA</span>
-        </div>
       </div>
       <div class="cta-tagline">
         <p>SMARTER QUOTES</p>
