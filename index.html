@@ -201,10 +201,35 @@
       Customised rates, detailed accommodation data and effortless trip building - all in one platform,
       built for how safari agents actually work.</p>
 
-  <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thanks!';">
-    <input type="email" placeholder="you@example.com" required>
-    <button type="submit">Notify me</button>
-  </form>
+    <form id="signup-form">
+        <input type="email" placeholder="you@example.com" required>
+        <button type="submit">Notify me</button>
+    </form>
+
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const form = e.target;
+          const btn = form.querySelector('button');
+          const email = form.querySelector('input[type=email]').value;
+
+          btn.disabled = true;
+          btn.textContent = 'Submitting…';
+
+          try {
+            const res = await fetch('https://m6omqcibmc.execute-api.af-south-1.amazonaws.com/signup', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email })
+            });
+            if (!res.ok) throw new Error();
+            btn.textContent = 'Thanks!';
+          } catch {
+            btn.textContent = 'Something went wrong — try again';
+            btn.disabled = false;
+          }
+        });
+    </script>
   <p class="form-note">No spam — just a note when we launch.</p>
 
   <div class="horizon" aria-hidden="true">
