@@ -32,7 +32,7 @@ resource "aws_sns_topic_subscription" "email" {
 
 data "archive_file" "lambda_zip" {
   type        = "zip"
-  source_dir  = "${path.module}/../src"
+  source_dir  = "${path.module}"
   output_path = "${path.module}/build/signup.zip"
 }
 
