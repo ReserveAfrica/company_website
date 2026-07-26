@@ -43,8 +43,8 @@ export const handler = async (event) => {
     await sns.send(
       new PublishCommand({
         TopicArn: SNS_TOPIC_ARN,
-        Subject: "New Reserve Africa signup",
-        Message: `New signup: ${email}`,
+        Subject: "I'm interested! - signup from reserveafrica.com",
+        Message: `New interested party: ${email}`,
       })
     );
   } catch (err) {
