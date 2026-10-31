@@ -20,6 +20,14 @@ button{font-family:inherit}
 .ra-apps>summary:focus-visible{outline:2px solid #1F5C4A;outline-offset:2px}
 .ra-apps[open]>summary svg{transform:rotate(180deg)}
 .ra-apps-menu a:hover,.ra-apps-menu a:focus-visible{background:#F4F5F2}
+.ra-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.ra-demo input{flex:1 1 180px;min-width:0;min-height:52px;padding:0 16px;border-radius:10px;border:1px solid transparent;background:#FFFFFF;color:#1B201E;font:inherit;font-size:16px;box-sizing:border-box}
+.ra-demo input::placeholder{color:#6B746F}
+.ra-demo input:focus-visible,.ra-demo button:focus-visible{outline:2px solid #FFFFFF;outline-offset:2px}
+.ra-demo button{flex:none;min-height:52px;padding:0 24px;border-radius:10px;border:0;background:#1B201E;color:#FFFFFF;font-size:16px;font-weight:600;cursor:pointer}
+.ra-demo button:hover{background:#000000}
+.ra-demo button:disabled{opacity:.7;cursor:default}
+.ra-demo-status{flex:1 1 100%;margin:0;font-size:15px;min-height:1.55em}
 </style>
 </head>
 <body>
@@ -40,7 +48,8 @@ button{font-family:inherit}
       </nav>
       <div style="flex: 1"></div>
       <div style="position: relative; display: flex; flex-wrap: wrap; gap: 10px; align-items: center">
-        <details class="ra-apps">
+        <!-- "Open app" menu hidden until desk/studio apps are ready: remove the hidden attribute to re-enable -->
+        <details class="ra-apps" hidden>
           <summary style="display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 14px; border-radius: 10px; color: #1B201E; font-size: 15px; cursor: pointer">Open app <svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5 6 7.5 9 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
           <div class="ra-apps-menu" style="position: absolute; top: calc(100% + 6px); right: 0; z-index: 20; width: min(300px, calc(100vw - 32px)); box-sizing: border-box; padding: 6px; background: #FFFFFF; border: 1px solid #DCDFD8; border-radius: 12px; box-shadow: 0 12px 32px rgba(27,32,30,.14)">
             <a href="https://desk.reserveafrica.com" style="display: block; padding: 10px 12px; border-radius: 8px; color: #1B201E; text-decoration: none"><span style="display: block; font-weight: 600; color: #1F5C4A">Reserve Desk</span><span style="display: block; font-size: 14px; color: #5C6560">For lodges, camps and hotels</span></a>
@@ -58,7 +67,7 @@ button{font-family:inherit}
         <span style="width: 32px; height: 32px; border-radius: 7px; background: #1F5C4A; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="#FFFFFF" stroke-width="1.6"><rect x="2" y="3" width="12" height="10" rx="1.5"></rect><path d="M2 7h12M6 7v6"></path></svg></span>
         <span style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #1F5C4A">Reserve Desk · for lodges, camps and hotels</span>
       </div>
-      <h1 style="margin: 0; font-size: clamp(36px, 5vw, 54px); line-height: 1.08; font-weight: 600; letter-spacing: -0.02em">Your rates, set up once and right every time</h1>
+      <h1 style="margin: 0; font-size: clamp(36px, 5vw, 54px); line-height: 1.08; font-weight: 600; letter-spacing: -0.02em">Your rates are set up once per season and quoted accurately every time</h1>
       <p style="margin: 0; font-size: 19px; color: #4A534E; max-width: 34em">Load your rooms, seasons, prices and policies in a few guided steps. Reserve Desk works out agent, single and child prices, checks everything, and publishes a rate manual your agents can quote from.</p>
       <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px">
         <a href="#contact" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 22px; border-radius: 10px; background: #1F5C4A; color: #FFFFFF; text-decoration: none; font-weight: 600">Book a demo</a>
@@ -168,8 +177,15 @@ button{font-family:inherit}
         <h2 style="margin: 0; font-size: 32px; line-height: 1.2; font-weight: 600">Stop answering the same rate emails</h2>
         <p style="margin: 8px 0 0; font-size: 18px; color: #E4EFEA">See your own rates in Reserve Desk.</p>
       </div>
-      <div style="display: flex; flex-wrap: wrap; gap: 12px">
-        <a href="mailto:info@reserveafrica.com" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 24px; border-radius: 10px; background: #FFFFFF; color: #1B201E; text-decoration: none; font-weight: 600">Book a demo</a>
+      <div style="flex: 1 1 440px; min-width: 0; display: flex; flex-wrap: wrap; gap: 12px">
+        <form class="ra-demo" data-product="Reserve Desk" style="display: flex; flex-wrap: wrap; gap: 12px; flex: 1 1 100%">
+          <label class="ra-sr" for="demo-name">Your name</label>
+          <input id="demo-name" name="name" type="text" autocomplete="name" placeholder="Your name" maxlength="200" required>
+          <label class="ra-sr" for="demo-email">Work email</label>
+          <input id="demo-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" maxlength="254" required>
+          <button type="submit">Book a demo</button>
+          <p class="ra-demo-status" role="status" aria-live="polite"></p>
+        </form>
       </div>
     </div>
   </section>

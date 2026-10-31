@@ -22,11 +22,11 @@
     '<p class="ra-legal-meta">Last updated: ' + LAST_UPDATED + '</p>' +
 
     '<p>Reserve Africa ("we", "us", "our") respects your privacy. This policy explains what personal information we collect through our website and our products, Reserve Desk and Reserve Studio, and how we use and protect it.</p>' +
-    '<p>We are based in South Africa, so we process personal information under the <strong>Protection of Personal Information Act 4 of 2013 (POPIA)</strong>. Many of our clients are outside South Africa. Where other data protection laws apply to you, such as the EU or UK General Data Protection Regulation (GDPR), we also respect the rights those laws give you.</p>' +
+    '<p>We are based in South Africa, so we process personal information under the <strong>Protection of Personal Information Act 4 of 2013 (POPIA)</strong>. Our clients are based around the world. Where the data protection laws of another country also apply to you (for example, the General Data Protection Regulation (GDPR) in the EU and UK), we also respect the rights those laws give you.</p>' +
 
     '<h3>1. Who we are</h3>' +
     COMPANY_DETAILS +
-    '<p>We are the "responsible party" under POPIA (the "controller" under the GDPR) for the personal information described in this policy. For personal information that our clients upload to or manage in our products, such as guest or traveller details, our client is the responsible party and we process it on their behalf as an "operator" (or "processor"), under our agreement with them.</p>' +
+    '<p>We are the "responsible party" under POPIA (often called the "controller" in other data protection laws) for the personal information described in this policy. For personal information that our clients upload to or manage in our products, such as guest or traveller details, our client is the responsible party and we process it on their behalf as an "operator" (or "processor"), under our agreement with them.</p>' +
 
     '<h3>2. Information we collect</h3>' +
     '<ul>' +
@@ -57,7 +57,7 @@
     '</ul>' +
 
     '<h3>5. International transfers</h3>' +
-    '<p>Because we work with clients and service providers around the world, your personal information may be transferred to, stored in, or accessed from countries outside South Africa or outside your own country. When this happens we make sure the transfer is permitted by law, for example because the recipient is subject to laws, binding corporate rules or a written agreement that provide an adequate level of protection, as required by section 72 of POPIA and, where applicable, the GDPR.</p>' +
+    '<p>Because we work with clients and service providers around the world, your personal information may be transferred to, stored in, or accessed from countries outside South Africa or outside your own country. When this happens we make sure the transfer is permitted by law, for example because the recipient is subject to laws, binding corporate rules or a written agreement that provide an adequate level of protection, as required by section 72 of POPIA and any other data protection laws that apply.</p>' +
 
     '<h3>6. Cookies</h3>' +
     '<p>Our website does not use advertising or tracking cookies. Our pages load fonts from Google Fonts, which means your browser connects to Google\'s servers and Google receives your IP address. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google\'s privacy policy</a>. Our products may use essential cookies to keep you signed in; these are needed for the service to work.</p>' +
@@ -74,14 +74,14 @@
     '<li>ask whether we hold personal information about you, and request a copy of it;</li>' +
     '<li>ask us to correct, update or delete it;</li>' +
     '<li>object to, or ask us to restrict, how we process it, including for direct marketing;</li>' +
-    '<li>ask us to transfer it to you or another organisation (data portability, under the GDPR);</li>' +
+    '<li>ask us to transfer it to you or another organisation (data portability), where the law that applies to you provides for this;</li>' +
     '<li>withdraw your consent where we rely on it;</li>' +
     '<li>lodge a complaint with a data protection regulator.</li>' +
     '</ul>' +
     '<p>To exercise any of these rights, email ' + mail + '. We may need to verify your identity before responding. Requests for access to records may also be made under the Promotion of Access to Information Act 2 of 2000 (PAIA).</p>' +
 
     '<h3>10. Complaints</h3>' +
-    '<p>If you are unhappy with how we have handled your personal information, please contact us first so we can try to put it right. You may also complain to the <strong>Information Regulator (South Africa)</strong> at <a href="https://inforegulator.org.za" target="_blank" rel="noopener">inforegulator.org.za</a>. If you are in the EU or UK, you may complain to your local supervisory authority, such as the UK Information Commissioner\'s Office.</p>' +
+    '<p>If you are unhappy with how we have handled your personal information, please contact us first so we can try to put it right. You may also complain to the <strong>Information Regulator (South Africa)</strong> at <a href="https://inforegulator.org.za" target="_blank" rel="noopener">inforegulator.org.za</a>. If you live outside South Africa, you may also have the right to complain to the data protection authority in your own country.</p>' +
 
     '<h3>11. Information Officer</h3>' +
     '<p>Our Information Officer can be contacted at ' + mail + '.</p>' +
