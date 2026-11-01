@@ -15,6 +15,7 @@
   var COMPANY_DETAILS =
     '<ul>' +
     '<li><strong>Trading name:</strong> RESERVE AFRICA</li>' +
+    '<li><strong>Company registration number:</strong> 2026/668152/07</li>' +
     '<li><strong>Email:</strong> ' + mail + '</li>' +
     '</ul>';
 
