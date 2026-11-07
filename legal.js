@@ -31,7 +31,7 @@
 
     '<h3>2. Information we collect</h3>' +
     '<ul>' +
-    '<li><strong>Contact and business details</strong> you give us when you email us, book a demo or sign up: your name, job title, company, email address, phone number and country.</li>' +
+    '<li><strong>Contact and business details</strong> you give us when you email us, join our waitlist or sign up: your name, job title, company, email address, phone number and country.</li>' +
     '<li><strong>Account information</strong> when you use our products: login details, user settings, and the rates, policies and other business content you add.</li>' +
     '<li><strong>Usage and technical information:</strong> IP address, browser and device type, pages visited, and dates and times of access, collected through server logs and similar tools.</li>' +
     '<li><strong>Communications:</strong> the content of emails and support requests you send us.</li>' +
@@ -40,7 +40,7 @@
 
     '<h3>3. How we use it</h3>' +
     '<ul>' +
-    '<li>To respond to your enquiries and arrange demos.</li>' +
+    '<li>To respond to your enquiries and manage our waitlist.</li>' +
     '<li>To provide, maintain, secure and improve our products and services.</li>' +
     '<li>To manage our relationship with you, including billing and support.</li>' +
     '<li>To send you product updates and relevant news, where you have agreed to this or where the law otherwise permits. You can unsubscribe at any time.</li>' +

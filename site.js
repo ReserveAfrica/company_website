@@ -14,7 +14,7 @@
 })();
 
 /*
- * "Book a demo" forms: post name + email to the signup API, which emails
+ * "Join the waitlist" forms: post name + email to the signup API, which emails
  * info@reserveafrica.com via SNS. No mail client is opened.
  */
 (function () {
@@ -38,13 +38,13 @@
       fetch(ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: 'demo', name: name, email: email, product: form.dataset.product })
+        body: JSON.stringify({ type: 'waitlist', name: name, email: email, product: form.dataset.product })
       })
         .then(function (res) { if (!res.ok) throw new Error(res.status); })
         .then(function () {
           form.reset();
-          button.textContent = 'Request sent';
-          status.textContent = 'Thanks, ' + name + '. We’ll email you shortly to set up your demo.';
+          button.textContent = 'You’re on the list';
+          status.textContent = 'Thanks, ' + name + '. You’re on the waitlist and we’ll be in touch soon.';
         })
         .catch(function () {
           button.disabled = false;

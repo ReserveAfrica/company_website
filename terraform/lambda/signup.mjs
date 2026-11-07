@@ -50,18 +50,20 @@ export const handler = async (event) => {
   }
 
   const isDemo = parsed.type === "demo";
+  const isWaitlist = parsed.type === "waitlist";
   let subject;
   let message;
 
-  if (isDemo) {
+  if (isDemo || isWaitlist) {
     const name = clean(parsed.name, 200);
     const product = clean(parsed.product, 50) || "Reserve Africa";
     if (!name) {
       return respond(400, { message: "Please provide your name." });
     }
-    subject = `Demo request: ${product} - reserveafrica.com`;
+    const kind = isWaitlist ? "Waitlist signup" : "Demo request";
+    subject = `${kind}: ${product} - reserveafrica.com`;
     message = [
-      "New demo request from reserveafrica.com",
+      `New ${kind.toLowerCase()} from reserveafrica.com`,
       "",
       `Name:    ${name}`,
       `Email:   ${email}`,
